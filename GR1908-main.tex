@@ -1,0 +1,118 @@
+% !TEX program = LuaLaTeX+se
+\documentclass[11pt,twoside]{book}
+
+\pagestyle{empty}
+\usepackage[inner=0.65in, outer=0.35in, top=0.5in, bottom=0.4in, papersize={6in,9in}, head=12pt, headheight=30pt, headsep=5pt]{geometry}
+\usepackage{fontspec}
+\usepackage[autocompile]{gregoriotex}
+\usepackage{hyperref}
+
+\usepackage{ebgaramond}
+\usepackage{pgothic}
+%\usepackage{venturisold}
+\usepackage{color}
+
+\usepackage{longtable}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+\usepackage{multind}
+
+%\makeindex{Introit}
+%\makeindex{Gradual}
+%\makeindex{Alleluia}
+%\makeindex{Sequence}
+%\makeindex{Tract}
+%\makeindex{Offertory}
+%\makeindex{Communion}
+%\makeindex{Antiphon}
+%\makeindex{Hymn}
+%\makeindex{Responsory}
+
+%%Hattip: Br. Innocent Smith, OP.
+%%Header (rev. 4/11/2011)
+\usepackage{fancyhdr}
+ \pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+ \fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[CE]{\leftmark}
+\fancyhead[CO]{\rightmark}
+ \fancypagestyle{plain}{ %
+\fancyhf{} % remove everything
+\renewcommand{\headrulewidth}{0pt} % remove lines as well
+\renewcommand{\footrulewidth}{0pt}}
+
+\titleformat{\part}{\color{red}\normalfont\huge\bfseries\filcenter}{\color{red}}{1em}{}
+\titleformat{\chapter}{\color{red}\normalfont\huge\bfseries\filcenter}{\color{red}}{1em}{}
+\titleformat{\section}{\color{red}\normalfont\huge\bfseries\filcenter}{\color{red}}{1em}{}
+\titleformat{\subsection}{\color{red}\normalfont\Large\bfseries\center}{\color{red}}{1em}{}
+\titleformat{\subsubsection}{\color{red}\normalfont\large\bfseries\center}{\color{red}}{1em}{}
+
+%\newcommand{\black}[1]{\textcolor{black}{#1}}
+\newcommand{\cent}[1]{\begin{center}{#1}\end{center}}
+\newcommand{\scrf}[1]{\grecommentary{{\small \red{\emph{#1}}}}}
+\newcommand{\code}[1]{}
+\newcommand{\bigline}{\line(1,0){450}}
+\newcommand*{\red}[1]{\textcolor{red}{#1}}
+\newcommand*{\redit}[1]{\textcolor{red}{\it #1}}
+
+%\newcommand{vts}[1]{\fontfamily{venturisold}\selectfont\textcolor{red} #1}
+
+%\newcommand{\ginit}[3]{\gresetfirstlineaboveinitial{\small \red{\textbf{#1}}}{\small \red{\textbf{#1}}} \setsecondannotation{\small \red{\textbf{#2}}}{\commentary{{\small \red{\emph{#3}}}}}}
+%\newcommand{\ginit}[3]{\greannotation{\small \red{\textbf{#1}}}{\small \red{\textbf{#1}}} \greannotation{\small \red{\textbf{#2}}}{\grecommentary{{\small \red{\emph{#3}}}}}}
+\newcommand{\ginit}[3]{%
+ \greannotation{\small \red{\textbf{#1}}}%
+ \greannotation{\small \red{\textbf{#2}}}%
+ \grecommentary{{\small \red{\emph{#3}}}}%
+}
+\newcommand{\gnoinit}{
+ %\gresetfirstlineaboveinitial{}{} \setsecondannotation{} \grecommentary{}
+ \greannotation{}%
+ \greannotation{}%
+ \grecommentary{}%
+}
+\newcommand{\occasion}[4]{\section*{\bf #3}%
+ \addcontentsline{toc}{section}{#4}%
+ \index{occasion}{#4}%
+ \hypertarget{#2}{}%
+ \nopagebreak%
+ \vspace{-10pt}%
+ \begin{center}\textcolor{red}{(#1)}\end{center}%
+ \vspace{-10pt}%
+ \nopagebreak%
+}
+%Need to distinquish here between parts - Temporum, Sanctorum, Votivae, Kyriale
+% Add #5 later. #5 being index code
+% TOC appears to be integrated into the Index.
+
+\input Acorn.fd
+\newcommand*\initfamily{\usefont{U}{Acorn}{xl}{n}}
+
+\newcommand{\ginitnorm}{\renewcommand*\initfamily{\normalfont}}
+\newcommand{\ginitgoth}{\renewcommand*\initfamily{\pgothfamily}}
+\newcommand{\ginitsquare}{\renewcommand*\initfamily{\usefont{U}{Acorn}{xl}{n}}}
+
+% Initial font
+\grechangestyle{initial}{\initfamily\fontsize{36}{36}\selectfont\textcolor{red}\relax}
+\newcommand{\redinit}{\grechangestyle{initial}{\initfamily\fontsize{36}{36}\selectfont\textcolor{red}\relax}}
+\newcommand{\blackinit}{\grechangestyle{initial}{\initfamily\fontsize{36}{36}\selectfont\relax}}
+
+\grechangestaffsize{17}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\sc Graduale Romanum\\1908\\Vatican Edition}
+\author{Transcribed by Andrew Hinkley}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\include{GR1908-body}
+
+\makeindex{All}
+\makeindex{occasion}
+\makeindex{Introit,Gradual, Alleluia, Sequence, Tract, Offertory, Communion, Antiphon, Hymn, Responsory}
+\end{document}
+
+
